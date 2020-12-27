@@ -1,0 +1,63 @@
+@font-face {
+    font-family: prompt;
+    src: url(assets/fonts/Prompt-Regular.ttf);
+}
+
+body {
+    background-color: coral;
+}
+
+.container {
+    font-family: prompt;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    background-color: #f1f1f1;
+}
+
+.indicator {
+    width: 100%;
+    height: 8px;
+    background: #ccc;
+}
+
+.indicator-bar {
+    height: 8px;
+    background: #2299fa;
+    width: 0%;
+}
+
+.nav {
+    position: fixed;
+    margin-top: 20px;
+    border-style: solid;
+    border-color: gray;
+    border-top: none;
+    border-bottom: none;
+    border-right: none;
+}
+
+.image-header img {
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+.image-footer img {
+    width: 100%;
+    margin-top: 50px;
+}
+
+.image img {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+.footer {
+    height: 100px;
+    width: 100%;
+}

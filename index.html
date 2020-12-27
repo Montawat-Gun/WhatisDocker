@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Docker</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="assets/images/icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="header">
+        <div class="indicator" id="indicator">
+            <div class="indicator-bar" id="progress">
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-2 d-none d-md-block">
+
+            </div>
+            <div class="col">
+                <div class="container">
+                    <section>
+                        <div class="d-flex justify-content-center image-header">
+                            <img src="assets/images/Picture0.png" alt="">
+                        </div>
+                        <div class="mt-5">
+                            <h2>แก้ปัญหาสภาพแวดล้อมที่ต่างกันด้วย Docker</h2>
+                        </div>
+                    </section>
+                    <section class="pt-5" id="section1">
+                        <h4>
+                            Docker คืออะไร
+                        </h4>
+                        <p>
+                            Docker เป็น Software Container
+                            ที่ถูกพัฒนาขึ้นมาให้สามารถการจัดการ Container ได้ง่าย Image มีขนาดเล็ก แยกเป็นชั้นๆ
+                            สร้างแนวคิด
+                            build,
+                            ship,
+                            run ที่แต่ละรอบของการสร้าง Container เร็วขึ้นมาก ทำให้เป็นที่สนใจและกำลังแพร่หลายในกลุ่ม
+                            Developer และ
+                            System Admin
+                        </p>
+                        <div class="d-flex justify-content-center image">
+                            <img src="assets/images/Picture9.png" alt="">
+                        </div>
+                    </section>
+                    <section class="pt-5">
+                        <h4>
+                            Docker มีชุดซอฟต์แวร์ให้ใช้งานดังนี้
+                        </h4>
+                        <p>
+                            <strong>1. Docker Engine</strong>&nbsp;เป็น Core หลักในการทำงาน <br>
+                            <strong>2. Docker Machine</strong>&nbsp;เป็นซอฟต์แวร์สำหรับสร้าง หรือ
+                            เซ็ตอัพเครื่องให้พร้อมสำหรับ
+                            container <br>
+                            <strong>3. Docker Swarm</strong>&nbsp;เป็นซอฟต์แวร์ที่เอาไว้เชื่อมต่อ Docker Engine
+                            หลายๆเครื่องมาเชื่อมต่อรวมกันให้เป็น cluster <br>
+                            <strong>4. Docker Compose</strong>&nbsp;เป็นซอฟต์แวร์สำหรับอำนวยความสะดวกในการรัน Container
+                            โดยสามารถสั่งรันหลายๆ Container ได้พร้อม ๆกัน ตั้งค่าต่าง ๆ รวมไปถึงเชื่อมโยง Container
+                            ให้สามารถทำงานร่วมกันได้
+                        </p>
+                    </section>
+                    <section class="pt-5" id="section2">
+                        <h4>
+                            ทำไมจึงควรใช้ Docker
+                        </h4>
+                        <p>
+                            1. กว่าจะติดตั้ง Software ในเครื่อง Server เพื่อรัน Applicaion ก็เสียเวลาไปกับการติดตั้งและ
+                            Configulation กันเป็นชั่วโมงแล้วหรือบางคนอาจจะเสียเวลาเป็นวันๆ <br>
+                            1. เครื่อง Development กับ Production ไม่เหมือนกัน เครื่อง Development
+                            ลงโปรแกรมไว้เวอร์ชันนึง
+                            แต่บนเครื่อง Production ลงไว้อีกเวอร์ชันนึง บางทีเขียน Code บนเครื่อง Development
+                            แล้วสามารถรันได้ปกติ
+                            แต่เมื่อเอา Code ขึ้น Production อาจจะทำให้ Code เกิด error หรือไม่สามารถทำงานได้ <br><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ปัญหาดังกล่าวจะไม่เกิดขึ้นถ้าใช้ Docker เพราะ Docker
+                            จะช่วยแพ็ค
+                            application เหล่านี้อยู่ในรูปแบบของ
+                            Container ซึ่งเราสามารถเอา Container ไปรันในเครื่องไหนก็ได้โดย Application
+                            ของเรายังทำงานได้ปกติไม่ผิดเพี้ยนจากเดิม ไม่ว่าจะไปรันในเครื่อง Development หรือบน
+                            Production
+                            Server
+                        </p>
+                    </section>
+                    <section class="pt-5" id="section3">
+                        <h4>
+                            องค์ประกอบต่าง ๆ ของ Docker
+                        </h4>
+                        <div class="d-flex justify-content-center image">
+                            <img src="assets/images/Picture1.png" alt="">
+                        </div>
+                        <div class="mt-3">
+                            <p>
+                                <strong>Docker container container</strong> จะถูกสร้างมาจาก Docker Image ที่เป็นต้นแบบ
+                                เกิดเป็น
+                                container จะได้ Service
+                                หรือ Application ที่สามารถเรียกใช้งานได้ทันที <br>
+                                <strong>Docker image</strong> คือต้นแบบของ Container ข้างในจะเป็น Linux ที่มีการติดตั้ง
+                                Application
+                                และ
+                                มีการ Configuration เอาไว้แล้ว ซึ่งเกิดมาจากการ build ไฟล์ Dockerfile ขึ้นมาเป็น image
+                                <br>
+                                <strong>Docker registry</strong> เราสามารถสร้าง Docker Image แล้วนำไปเก็บรวบรวมไว้บน
+                                server
+                                (ลักษณะเดียวกับการเก็บ Source Code ไว้บน Github) โดย Docker registry ณ
+                                ปัจจุบันก็มีให้เลือกใช้งานได้หลากหลายโดยมี Docker Hub เป็น Docker registry
+                                หลักในการเรียกใช้(pull)
+                                Docker Image และนอกจากนี้ยังมีผู้ให้บริการ docker registry เจ้าอื่น ๆด้วย เช่น Gitlab,
+                                Quay.io,
+                                Google
+                                Cloud เป็นต้น <br>
+                            </p>
+                        </div>
+                    </section>
+                    <section class="pt-5" id="section4">
+                        <h4>จุดเด่นของ Docker</h4>
+                        <p>
+                            1. ในกระบวน Software Container ทั้งหมด Docker จะใช้ทรัพยากรในการทำงานของตัวมันเอง
+                            น้อยที่สุดแล้ว
+                            <br>
+                            2. โลกนี้ไม่ได้มี Software Container เพียงแค่ Docker เท่านั้น ยังมีตัวอื่น ๆอีกหลายตัว แต่
+                            Docker
+                            ก็ใช้งานได้ง่ายที่สุดแล้ว <br>
+                            3. Docker สามารถ Config ได้ง่าย สามารถสร้าง Container หนึ่งตัวเพื่อรัน Web Service ได้
+                            และสร้างอีกตัว
+                            เพื่อรัน MS SQL (คนละแพลตฟอร์มกัน) ได้ โดยใช้ทรัพยากรร่วมกัน <br>
+                            4. สามารถใช้ Docker สร้าง Service แบบเดียวกันหลายๆตัว แล้วให้แต่ละตัวช่วยกันทำงาน
+                            ทำให้สามารถรับผู้เยี่ยมชมได้มากขึ้น <br>
+                        </p>
+                    </section>
+                    <section class="pt-5" id="section5">
+                        <h4>ประโยชน์ของ Docker</h4>
+                        <p>1. คือการจำลองสภาพแวดล้อมของเครื่องที่ใช้ในการทดสอบให้เหมือนกับเครื่องที่ใช้งานจริงบน Server
+                            เนื่องจากปัญหาส่วนใหญ่ที่ Dev เจอในการทดสอบงาน
+                            คือสภาพแวดล้อมที่แตกต่างกันของเครื่องจริงและเครื่องทดสอบ
+                            ทำให้ได้ผลการทดสอบแตกต่างกัน <br>
+                            2. คือการขยายระบบ ยกตัวอย่างเช่นตอนสิ้นเดือนที่มักจะมีปริมาณการใช้งาน Server
+                            มากกว่ากลางเดือน
+                            เราก็สามารถใช้ Docker หลายๆตัวช่วยกันทำงานได้ (มีคนช่วยกันทำงานมากกว่า 1 คน
+                            งานก็ต้องเสร็จเร็วกว่า
+                            หรือไม่ก็สามารถทำงานได้มากกว่า)
+                            โดยที่มีค่าใช้จ่ายเพิ่มไม่มากนักเฉพาะตอนที่มีการใช้งานเพิ่มเท่านั้น
+                            แลกกับการลงทุนขยายระบบด้วยการเพิ่ม Hardware เพราะใน 1 เดือน
+                            อาจจะมีแค่ช่วงเวลาสั้นๆเท่านั้นที่ต้องการทรัพยากรเพิ่ม
+                        </p>
+                    </section>
+                    <section class="pt-5" id="section6">
+                        <h4 class="mb-3">ตัวอย่างปัญหา</h4>
+                        <h5><strong>ปัญหา</strong></h5>
+                        <p>
+                            สมมุติว่าต้องเขียนเว็บที่ต้องต่อ database จะต้องทำยังไงบ้าง ?
+                            อย่างแรกเลยจะต้องติดตั้งโปรแกรมต่าง ๆ ในเครื่องก่อน เช่น คนเขียน php ก็ต้องติดตั้ง Apache
+                            หรือ
+                            Java
+                            ก็ต้องติดตั้ง JDK, Node, .NET เป็นต้น แล้วแต่ว่าจะเขียนเว็บด้วยอะไร ส่วนตัว database
+                            ก็ต้องไปติดตั้งเช่นกัน (ตัวอย่าง SQL, MySQL, MongoDB) ขึ้นอยู่กับว่าจะใช้ database ตัวไหน
+                            หรือพูดแบบรวบรัดง่าย ๆ คือ ต้องเตรียม Environment ของเครื่องคอมให้พร้อมที่จะทำงาน ตามรูป
+                        </p>
+                        <div class="d-flex justify-content-center image">
+                            <img src="assets/images/Picture2.png" alt="">
+                        </div>
+                        <p>
+                            แต่เวลาที่ทำงานกันเป็นทีมจริง ๆ ก็จะพบว่าทุกคนในทีมก็ต้องเตรียม Environment แบบเดียวกัน
+                            จะได้ทำงานด้วยกันได้ ซึ่งก็จะพบกับปัญหาว่า บางคนใช้ Windows บางคนใช้ MacOS บางคนใช้ Linux
+                            และแม้แต่กระทั่ง Software Version ก็ยังเป็นคนละตัวกันอีกต่างหาก ตามรูป
+                        </p>
+                        <div class="d-flex justify-content-center image">
+                            <img src="assets/images/Picture3.png" alt="">
+                        </div>
+                        <div class="alert alert-danger" role="alert">
+                            <p>
+                                <u>ข้อควรระวัง</u>
+                                บ่อยครั้งที่เราไม่สนใจว่าเครื่องแต่ละคนเป็นยังไงใครอยากใช้อะไรก็ใช้ไป
+                                มันจะทำให้เรามองไม่เห็นปัญหา
+                                เช่น
+                                การเขียนโค้ดแบบนี้มันทำงานได้กับ version นี้เท่านั้น พอไปทำงานที่เครื่องอื่นที่ไม่ได้ใช้
+                                version
+                                นั้น ๆ
+                            </p>
+                        </div>
+                        <p>
+                            สมมุติว่าเคลียกับคนในทีมจนได้ environments เหมือนกันทั้งทีมละ
+                            สุดท้ายเราก็ต้องเอาเว็บที่เราเขียนเสร็จ
+                            ไปทำงานที่เครื่องเซิฟเวอร์ซักตัว ซึ่งคำถามคือ เจ้าเซิฟเวอร์เครื่องนั้นมันถูกตั้ง
+                            Environments
+                            เหมือนกับของเราหรือเปล่า?
+                        </p>
+                        <div class="d-flex justify-content-center image">
+                            <img src="assets/images/Picture4.png" alt="">
+                        </div>
+                        <p>
+                            สมมุติอีกว่าตั้งค่าต่าง ๆ ของเซิฟเวอร์ได้ไม่มีปัญหา
+                            ซึ่งอยู่มาวันหนึ่งคนเข้าชมเว็บเยอะขึ้นเราก็ต้องขยายเซิฟเวอร์เพื่อรองรับผู้ใช้ปริมาณมาก ๆ
+                            แล้วเครื่องเซิฟเวอร์ที่เราขยายเพิ่มขึ้นมา เราจะตั้งค่า Environment พวกนั้นยังไง?
+                            พวกมันจะคุยกันยังไง?
+                            Network ล่ะ? Infrastructure และส่วนอื่น ๆ
+                        </p>
+                        <div class="d-flex justify-content-center image">
+                            <img src="assets/images/Picture5.png" alt="">
+                        </div>
+                        <h5><strong>วิธีแก้ปัญหา</strong></h5>
+                        <p>
+                            ซึ่งหนึ่งในการแก้ปัญหาแบบนี้ที่กำลังได้รับการนิยมอยู่ก็คือการใช้ Docker นั่นเอง
+                            เมื่อเราหรือทีมจะเขียนอะไรก็ตาม เราก็จะตกลงกันให้เรียบร้อยว่าจะใช้ Environments เป็นแบบไหน
+                            แล้วเราก็จะสร้างสิ่งที่เรียกว่า Docker Image ขึ้นมา
+                        </p>
+                        <div class="d-flex justify-content-center image">
+                            <img src="assets/images/Picture6.png" alt="">
+                        </div>
+                        <p>
+                            Docker Image คล้าย ๆ กับการที่เราทำ Backup Image ที่มันจะจำสถานะทุกอย่างที่เรากำหนดเอาไว้
+                            เช่น
+                            ลงโปรแกรมอะไรไว้ เวอร์ชั่นเท่าไหร่ ของต่าง ๆถูกตั้งค่าเอาไว้ยังไง บลาๆ แล้วใครก็ตามที่เอา
+                            Image
+                            ไปใช้ก็จะได้สถานะ Environments ทุกอย่างตามที่ Image ถูกตั้งค่าไว้นั่นเอง หลังจากที่ได้
+                            Docker
+                            Image
+                            ละถัดมา ทุกคนในทีมก็จะใช้ Docker Image ตัวนั้นอีกที โดยเจ้า Docker Image จะจัดการ
+                            Environments
+                            ทุกอย่างให้เป็นไปตามที่มันถูกระบุไว้ ตามรูป
+                        </p>
+                        <div class="d-flex justify-content-center image">
+                            <img src="assets/images/Picture7.png" alt="">
+                        </div>
+                        <p>และแน่นอนที่เซิฟเวอร์ก็สามารถเอาไปใช้ได้ และรวมถึงการทำ Server Scaling ก็เช่นกัน</p>
+                        <div class="d-flex justify-content-center image">
+                            <img src="assets/images/Picture8.png" alt="">
+                        </div>
+                    </section>
+
+                    <section class="pt-5" id="section7">
+                        <h4>ที่มา</h4>
+                        <div class="">
+                            <a href="https://medium.com/@somprasongd/มาลองใช้งาน-docker-กันดีกว่า-305fb178d22b">
+                                https://medium.com/@somprasongd/มาลองใช้งาน-docker-กันดีกว่า-305fb178d22b
+                            </a>
+                        </div>
+                        <div>
+                            <a href="https://www.goragod.com/knowledge/docker_คืออะไร.html">
+                                https://www.goragod.com/knowledge/docker_คืออะไร.html
+                            </a>
+                        </div>
+                        <div>
+                            <a
+                                href="https://www.saladpuk.com/basic/docker-1?fbclid=IwAR0ykEyY3EDWx-BUDeovGS5jlPR1Nsf1cx25YcV-CIvQVcbjZYkYNGEMyCg">
+                                https://www.saladpuk.com/basic/docker-1?fbclid=IwAR0ykEyY3EDWx-BUDeovGS5jlPR1Nsf1cx25YcV-CIvQVcbjZYkYNGEMyCg
+                            </a>
+                        </div>
+                    </section>
+
+                    <section class="pt-5">
+                        <h4>ผู้จัดทำ</h4>
+                        <p>
+                            นายมณฑวรรษ ศรีไพบูลย์ รหัส 018-7 ปวค.60/1 <br>
+                            นายชนะ สุภาพเสรีพงศ์ รหัส 025-2 ปวค.60/1 <br>
+                            นายพงศธร รัตนอาษา รหัส 027-8 ปวค.60/1 <br>
+                            นายพงษ์ปิติ บุญยัง รหัส 042-7 ปวค.60/1 <br>
+                            นายฐิติวุฒิ แช่มช้อย รหัส 043-5 ปวค.60/1 <br>
+
+                        </p>
+                    </section>
+
+                </div>
+            </div>
+            <div class="col-2 d-none d-md-block">
+                <nav class="nav flex-column">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Contents</a>
+                    <a class="nav-link pb-0" href="#section1">Docker คืออะไร</a>
+                    <a class="nav-link pb-0" href="#section2">ทำไมจึงควรใช้ Docker</a>
+                    <a class="nav-link pb-0" href="#section3">องค์ประกอบต่าง ๆ ของ Docker</a>
+                    <a class="nav-link pb-0" href="#section4">จุดเด่นของ Docker</a>
+                    <a class="nav-link pb-0" href="#section5">ประโยชน์ของ Docker</a>
+                    <a class="nav-link pb-0" href="#section6">ตัวอย่างปัญหา</a>
+                    <a class="nav-link pb-0" href="#section7">ที่มา</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <section>
+        <div class="d-flex justify-content-center image-footer">
+            <img src="assets/images/Picture10.png" alt="">
+        </div>
+    </section>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="behavior.js"></script>
+</body>
+
+</html>
